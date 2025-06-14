@@ -2,6 +2,7 @@
 import Pattern from './Components/Pattern'
 import Navbar from './Components/Navbar'
 import HeroSection from './Components/HeroSection'
+import TotalMember from './Components/TotalMember'
  
  function App() {
    return (
@@ -13,6 +14,7 @@ import HeroSection from './Components/HeroSection'
      <div className=' relative z-10 text-white'>
           <Navbar/>
           <HeroSection/>
+          <TotalMember/>
      </div>
     </>
    
