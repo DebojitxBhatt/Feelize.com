@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import Input from './Input';
-import ServiceCard from './ServiceCard';
+ // import ServiceCard from './ServiceCard';
 
 function HeroSection() {
     return (
@@ -32,15 +31,12 @@ function HeroSection() {
                 <Card />
             </div>
 
-            {/* Form */}
-            <div className='text-center justify-center flex mt-9'>
-                <Input />
-            </div>
+            
 
-            {/* services Card  */}
+            {/* services Card 
             <div>
                 <ServiceCard />
-            </div>
+            </div> */}
         </div>
     );
 }

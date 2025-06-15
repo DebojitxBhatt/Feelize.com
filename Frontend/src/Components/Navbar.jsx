@@ -16,9 +16,15 @@ function Navbar() {
 
                 {/* Desktop Menu */}
                 <ul className="hidden md:flex gap-6 text-lg font-semibold">
-                    <li className="hover:text-blue-600 cursor-pointer">How it Works</li>
-                    <li className="hover:text-blue-600 cursor-pointer">Pricing</li>
-                    <li className="hover:text-blue-600 cursor-pointer">FAQ</li>
+                    <li>
+                        <a href="#how" className="hover:text-blue-600 cursor-pointer">How it Works</a>
+                    </li>
+                    <li>
+                        <a href="#pricing" className="hover:text-blue-600 cursor-pointer">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#faq" className="hover:text-blue-600 cursor-pointer">FAQ</a>
+                    </li>
                 </ul>
 
                 {/* Hamburger for Mobile */}
