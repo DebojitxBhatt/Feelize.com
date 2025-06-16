@@ -1,19 +1,11 @@
- import React from 'react';
-import Snowfall from 'react-snowfall';
-import HeroImg from '../assets/hero_img.png';
+import React from 'react';
+import HeroImg from '../assets/hero_img.png'; // Save your image here
 
 const Hero = () => {
   return (
-    <section className="relative w-full bg-white py-12 px-6 md:px-12 mt-7   overflow-hidden">
-      {/* Snow or Ice */}
-      <Snowfall
-        snowflakeCount={250}
-        color="#3399cc" // Light icy blue
-        style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 0 }}
-      />
-
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="w-full bg-white py-12 px-6 md:px-12 mt-7 shadow-xl">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        
         {/* Left Text Section */}
         <div className="flex-1">
           <h1 className="text-4xl sm:text-5xl font-semibold text-gray-800 mb-6 leading-tight">
@@ -35,11 +27,12 @@ const Hero = () => {
           <img src={HeroImg} alt="Team working" className="w-full h-auto" />
         </div>
       </div>
+{/* Half Circle Bottom Center */}
+<div className="w-full flex justify-center bg-white">
+  <div className="w-28 h-14 rounded-t-full bg-gradient-to-tr from-[#8e2de2] via-[#DE4396] to-[#DE4396]  "></div>
+</div>
 
-      {/* Half Circle Bottom Center */}
-      <div className="w-full flex justify-center bg-white">
-        <div className="w-28 h-14 rounded-t-full bg-gradient-to-tr from-[#8e2de2] via-[#DE4396] to-[#DE4396]"></div>
-      </div>
+      
     </section>
   );
 };
