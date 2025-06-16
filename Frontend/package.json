@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.18.1",
+    "phosphor-react": "^1.4.1",
     "react": "^19.1.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.1.0",
