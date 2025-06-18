@@ -1,7 +1,8 @@
- import navaj from '../assets/navaj_photo.jpg';
- import team1 from '../assets/team_1.png';
- import team2 from '../assets/team_2.png';
- import team3 from '../assets/team_3.png';
+ import { motion } from 'framer-motion';
+import navaj from '../assets/navaj_photo.jpg';
+import team1 from '../assets/team_1.png';
+import team2 from '../assets/team_2.png';
+import team3 from '../assets/team_3.png';
 
 const teams = [
   {
@@ -22,7 +23,7 @@ const teams = [
     quote: '“A reliable partner who aligns with our mission and delivers on time. Saved us months of hiring!”',
     author: 'Jason Markham',
   },
-    {
+  {
     id: 3,
     textAlign: 'left',
     title: 'Scale your development efficiently',
@@ -33,24 +34,47 @@ const teams = [
   }
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+};
+
+const slideIn = (direction) => ({
+  hidden: { opacity: 0, x: direction === 'left' ? -80 : 80 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+});
+
 const TeamSection = () => {
   return (
-    <section className="py-24 px-6 bg-white">
-      <h2 className="text-center text-4xl font-bold mb-16 leading-tight">
+    <section id='how-it-works' className="py-24 px-6 bg-white">
+      <motion.h2
+        className="text-center text-4xl font-bold mb-16 leading-tight"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <span className="text-gray-700">Way of building</span>{' '}
         <span className="text-purple-700">Great Software</span>
-      </h2>
+      </motion.h2>
 
       <div className="space-y-24 max-w-7xl mx-auto">
         {teams.map((team, i) => (
-          <div
+          <motion.div
             key={team.id}
             className={`flex flex-col lg:flex-row ${
               team.textAlign === 'right' ? 'lg:flex-row-reverse' : ''
             } items-center gap-10 relative`}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
           >
             {/* Image with top/bottom half-circle */}
-            <div className="relative w-full lg:w-[45%]">
+            <motion.div
+              className="relative w-full lg:w-[45%]"
+              variants={slideIn(team.textAlign === 'left' ? 'left' : 'right')}
+            >
               <img
                 src={team.image}
                 alt="team"
@@ -74,10 +98,13 @@ const TeamSection = () => {
                     : 'bottom-[-20px] left-[-20px]'
                 }`}
               ></div>
-            </div>
+            </motion.div>
 
             {/* Text */}
-            <div className="w-full lg:w-[55%] text-left">
+            <motion.div
+              className="w-full lg:w-[55%] text-left"
+              variants={slideIn(team.textAlign === 'left' ? 'right' : 'left')}
+            >
               <h3 className="text-3xl font-semibold text-gray-900 mb-4">
                 {team.title}
               </h3>
@@ -88,8 +115,8 @@ const TeamSection = () => {
               <p className="text-gray-800 font-semibold">
                 {team.author} <span className="text-gray-500 font-normal">/ CEO</span>
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </section>
