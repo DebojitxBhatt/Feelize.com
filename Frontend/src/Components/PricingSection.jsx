@@ -56,7 +56,7 @@ const PricingSection = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section className="bg-gray-50 py-20 px-6" id="pricing">
       <div className="text-center mb-14">
         <h2 className="text-4xl font-bold text-gray-800">
           Our <span className="text-purple-700">Pricing</span>

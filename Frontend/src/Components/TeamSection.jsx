@@ -12,7 +12,7 @@ const teams = [
     desc: `Finding the right talent is not easy. We help you find the talent that suits your needs, follows your processes, and sticks with you long term—not the case with freelancers. Our delivery model helps you cut costs and deliver within budget.`,
     image: team1,
     quote: '“Someone so quick to identify larger problem with the software as we decided to expand our scope to build new modules.”',
-    author: 'Jason Markham',
+     
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const teams = [
     desc: `Our proven model accelerates software delivery while maintaining high quality. Whether it's building a new platform or scaling your current stack, our flexible teams adapt to your goals and timelines.`,
     image: team2,
     quote: '“A reliable partner who aligns with our mission and delivers on time. Saved us months of hiring!”',
-    author: 'Jason Markham',
+ 
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const teams = [
     desc: `Our proven model accelerates software delivery while maintaining high quality. Whether it's building a new platform or scaling your current stack, our flexible teams adapt to your goals and timelines.`,
     image: team3,
     quote: '“A reliable partner who aligns with our mission and delivers on time. Saved us months of hiring!”',
-    author: 'Jason Markham',
+    
   }
 ];
 
@@ -112,9 +112,7 @@ const TeamSection = () => {
               <blockquote className="italic text-purple-700 text-md font-medium mb-4 border-l-4 border-purple-300 pl-4">
                 {team.quote}
               </blockquote>
-              <p className="text-gray-800 font-semibold">
-                {team.author} <span className="text-gray-500 font-normal">/ CEO</span>
-              </p>
+           
             </motion.div>
           </motion.div>
         ))}

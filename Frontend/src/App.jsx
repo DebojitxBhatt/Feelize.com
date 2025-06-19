@@ -7,6 +7,7 @@ import TeamSection from './Components/TeamSection'
 import PricingSection from './Components/PricingSection'
 import TechStackSection from './Components/TechStackSection'
 import WhyChooseUs from './Components/WhyChooseUs'
+import Footer from './Components/Footer'
  
   
  function App() {
@@ -21,6 +22,7 @@ import WhyChooseUs from './Components/WhyChooseUs'
       <PricingSection/>
       <TechStackSection/>
       <WhyChooseUs/>
+      <Footer/>
     </div>
     </>
    
