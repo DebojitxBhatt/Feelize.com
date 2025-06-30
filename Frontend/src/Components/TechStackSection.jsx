@@ -72,7 +72,7 @@ const stacks = [
 
 const TechStackSection = () => {
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white py-24 px-6" id="Technologies">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-800 leading-tight">
           Our <span className="text-purple-700">Tech Stack</span>

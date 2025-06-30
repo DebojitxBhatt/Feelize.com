@@ -6,10 +6,15 @@ html, body {
   scroll-behavior: smooth;
   overflow: -moz-scrollbars-none; /* Older Firefox */
   -ms-overflow-style: none;        /* IE and Edge */
-  scrollbar-width: none;           /* Firefox */
+  scrollbar-width: none; 
+   overflow-x: hidden;          /* Firefox */
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;                   /* Chrome, Safari, Opera */
+}
+
+body {
+ 
 }

@@ -3,7 +3,7 @@ import HeroImg from '../assets/hero_img.png'; // Save your image here
 
 const Hero = () => {
   return (
-    <section className="w-full bg-white py-12 px-6 md:px-12 mt-7 shadow-xl">
+    <section className="w-full bg-white py-12 px-6 md:px-12 mt-12 shadow-xl">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         
         {/* Left Text Section */}

@@ -55,6 +55,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
           <ul className="space-y-2 text-sm">
             <li>Email: <a href="mailto:hello@feelize.dev" className="text-purple-400 hover:underline">info@feelize.com</a></li>
+            <li> <a className="hover:text-purple-400 hover:underline" href="https://wellfound.com/company/feelize">Wellfound Profile</a></li>
             <li>Phone: +91 7383034778</li>
             <li>Location: NYC, USA</li>
             <li>Support: 24/7 Online</li>

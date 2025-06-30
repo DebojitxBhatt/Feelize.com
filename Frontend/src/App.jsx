@@ -8,7 +8,8 @@ import PricingSection from './Components/PricingSection'
 import TechStackSection from './Components/TechStackSection'
 import WhyChooseUs from './Components/WhyChooseUs'
 import Footer from './Components/Footer'
- 
+import AboutUs from './Components/AboutUs'
+    
   
  function App() {
    return (
@@ -18,11 +19,13 @@ import Footer from './Components/Footer'
       <Hero/>
       <ServicesSection/>
       <OurProcess/>
+      <AboutUs/>
       <TeamSection/>
       <PricingSection/>
       <TechStackSection/>
       <WhyChooseUs/>
-      <Footer/>
+      
+        <Footer/>
     </div>
     </>
    
