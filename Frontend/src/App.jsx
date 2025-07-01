@@ -9,6 +9,7 @@ import TechStackSection from './Components/TechStackSection'
 import WhyChooseUs from './Components/WhyChooseUs'
 import Footer from './Components/Footer'
 import AboutUs from './Components/AboutUs'
+import ComparisonSection from './Components/ComparisonSection'
     
   
  function App() {
@@ -24,7 +25,7 @@ import AboutUs from './Components/AboutUs'
       <PricingSection/>
       <TechStackSection/>
       <WhyChooseUs/>
-      
+      <ComparisonSection/>
         <Footer/>
     </div>
     </>
