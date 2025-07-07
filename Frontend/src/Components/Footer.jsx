@@ -1,5 +1,50 @@
-import React from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaBriefcase
+} from "react-icons/fa";
+import { MdEmail, MdPhone, MdLocationOn, MdHeadsetMic } from "react-icons/md";
+import Logo from "../assets/LOGO_FEELIZE.png";
+
+const quickLinks = [
+  {
+    label:"Services",
+    path: "#"
+  },
+  {
+    label:"Pricing",
+    path: "#"
+  },
+  {
+    label:"How it works",
+    path: "#"
+  }
+]
+
+const services = [
+  {
+    label:"Frontend Development",
+    path: "#"
+  },
+  {
+    label:"Full Stack Web Apps",
+    path: "#"
+  },
+  {
+    label:"API Integrations",
+    path: "#"
+  },
+  {
+    label:"UI/UX Design",
+    path: "#"
+  },
+  {
+    label:"WordPress Development",
+    path: "#"
+  }
+]
 
 const Footer = () => {
   return (
@@ -7,59 +52,153 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Column 1 - Logo & Description */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-3">Feelize</h2>
+          <img src={Logo} alt="logo"  className="mb-0 w-40  object-contain object-top -mt-2" />
           <p className="text-sm leading-relaxed">
-            We build modern, scalable web solutions using the latest technologies. Your product idea is in good hands.
+            We build modern, scalable web solutions using the latest
+            technologies. Your product idea is in good hands.
           </p>
-          {/* Social Icons */}
-          <div className="flex gap-3 mt-5">
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition">
-              <FaTwitter />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition">
-              <FaLinkedinIn />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition">
-              <FaInstagram />
-            </a>
-          </div>
         </div>
 
         {/* Column 2 - Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+            <div className="h-0.5 w-8 bg-purple-600 rounded"></div>
+          </div>
+
           <ul className="space-y-2 text-sm">
-            <li><a href="#services" className="hover:text-white">Services</a></li>
-            <li><a href="#pricing" className="hover:text-white">Pricing</a></li>
-            <li><a href="#how-it-works" className="hover:text-white">How it works</a></li>
+            {quickLinks.map((link, idx) => (
+              <li key={idx} className="group">
+                <a
+                  href={link.path}
+                  className="flex items-center gap-2 transition-all duration-200 group-hover:translate-x-2 hover:text-white"
+                >
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
+                    –
+                  </span>
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Column 3 - Services */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Our Services</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className="text-lg font-semibold text-white ">Our Services</h3>
+            <div className="h-0.5 w-8 bg-purple-600 rounded"></div>
+          </div>
+
           <ul className="space-y-2 text-sm">
-            <li>Frontend Development</li>
-            <li>Full Stack Web Apps</li>
-            <li>API Integrations</li>
-            <li>UI/UX Design</li>
-            <li>WordPress Development</li>
+            {services.map((link, i) => (
+              <li key={i} className="group">
+                <a
+                  href={link.path}
+                  className="flex items-center gap-2 transition-all duration-200 group-hover:translate-x-2 hover:text-white"
+                >
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
+                    –
+                  </span>
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Column 4 - Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className="text-lg font-semibold text-white ">Contact Us</h3>
+            <div className="h-0.5 w-8 bg-purple-600 rounded"></div>
+          </div>
           <ul className="space-y-2 text-sm">
-            <li>Email: <a href="mailto:hello@feelize.dev" className="text-purple-400 hover:underline">info@feelize.com</a></li>
-            <li> <a className="hover:text-purple-400 hover:underline" href="https://wellfound.com/company/feelize">Wellfound Profile</a></li>
-            <li>Phone: +91 7383034778</li>
-            <li>Location: NYC, USA</li>
-            <li>Support: 24/7 Online</li>
+            {/* Email */}
+            <li className="flex items-start gap-3">
+              <MdEmail className="text-purple-400 mt-1" />
+              <div>
+                <div className="text-gray-400">Send Us Email</div>
+                <a
+                  href="mailto:info@feelize.com"
+                  className="text-purple-400 hover:underline break-all"
+                >
+                  info@feelize.com
+                </a>
+              </div>
+            </li>
+
+            {/* Phone */}
+            <li className="flex items-start gap-3">
+              <MdPhone className="text-purple-400 mt-1" />
+              <div>
+                <div className="text-gray-400">Call Us</div>
+                <span>+91 7383034778</span>
+              </div>
+            </li>
+
+            {/* Location */}
+            <li className="flex items-start gap-3">
+              <MdLocationOn className="text-purple-400 mt-1" />
+              <div>
+                <div className="text-gray-400">Location</div>
+                <span>NYC, USA</span>
+              </div>
+            </li>
+
+            {/* Wellfound Profile */}
+            <li className="flex items-start gap-3">
+              <FaBriefcase className="text-purple-400 mt-1" />
+              <div>
+                <div className="text-gray-400">wellfound&nbsp;<a
+                  className="text-purple-400 hover:underline"
+                  href="https://wellfound.com/company/feelize"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Profile
+                </a>
+                </div>
+              </div>
+            </li>
+
+            {/* Support */}
+            <li className="flex items-start gap-3">
+               <MdHeadsetMic className="text-purple-400 mt-1" />
+              <div>
+                <div className="text-gray-400">Support</div>
+                <span>24/7 Online</span>
+              </div>
+            </li>
           </ul>
+
+          {/* Social Icons */}
+          <div className="flex gap-4 mt-6">
+            <a
+              href="#"
+              className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition"
+            >
+              <FaInstagram />
+            </a>
+          </div>
         </div>
       </div>
 
