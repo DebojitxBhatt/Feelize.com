@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
 import { Link as ScrollLink } from 'react-scroll';
+import { useLocation } from 'react-router-dom';
 import logo from '../assets/LOGO_FEELIZE.png';
 
 function Navbar() {
@@ -8,10 +8,12 @@ function Navbar() {
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const location = useLocation();
+  const isOnHomePage = location.pathname === '/';
 
   const NavLink = [
     { name: 'About us', id: 'about-us' },
-    { name: 'Services', id: 'services' },
+    { name: 'Services', id: 'featured-services' }, // Changed from 'services' to 'featured-services'
     { name: 'Technologies', id: 'Technologies' },
     { name: 'How it Works', id: 'how-it-works' },
   ];
@@ -68,15 +70,24 @@ function Navbar() {
                 onMouseEnter={() => link.hasDropdown && setShowServices(true)}
                 onMouseLeave={() => link.hasDropdown && setShowServices(false)}
               >
-                <ScrollLink
-                  to={link.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-80}
-                  className="hover:text-red-600"
-                >
-                  {link.name}
-                </ScrollLink>
+                {isOnHomePage ? (
+                  <ScrollLink
+                    to={link.id}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    className="hover:text-red-600"
+                  >
+                    {link.name}
+                  </ScrollLink>
+                ) : (
+                  <a
+                    href={`/#${link.id}`}
+                    className="hover:text-red-600"
+                  >
+                    {link.name}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -119,16 +130,26 @@ function Navbar() {
             <ul className="space-y-4">
               {NavLink.map((link, idx) => (
                 <li key={idx} className="border-b border-gray-200 pb-2">
-                  <ScrollLink
-                    to={link.id}
-                    smooth={true}
-                    duration={500}
-                    offset={-80}
-                    onClick={closeMenu}
-                    className="text-black text-lg font-medium hover:text-red-600 block"
-                  >
-                    {link.name}
-                  </ScrollLink>
+                  {isOnHomePage ? (
+                    <ScrollLink
+                      to={link.id}
+                      smooth={true}
+                      duration={500}
+                      offset={-80}
+                      onClick={closeMenu}
+                      className="text-black text-lg font-medium hover:text-red-600 block"
+                    >
+                      {link.name}
+                    </ScrollLink>
+                  ) : (
+                    <a
+                      href={`/#${link.id}`}
+                      onClick={closeMenu}
+                      className="text-black text-lg font-medium hover:text-red-600 block"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

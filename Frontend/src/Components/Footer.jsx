@@ -3,48 +3,43 @@ import {
   FaTwitter,
   FaLinkedinIn,
   FaInstagram,
-  FaBriefcase
+  FaBriefcase,
 } from "react-icons/fa";
 import { MdEmail, MdPhone, MdLocationOn, MdHeadsetMic } from "react-icons/md";
 import Logo from "../assets/LOGO_FEELIZE.png";
 
 const quickLinks = [
   {
-    label:"Services",
-    path: "#"
+    label: "Services",
+    path: "#",
   },
   {
-    label:"Pricing",
-    path: "#"
+    label: "Pricing",
+    path: "#",
   },
   {
-    label:"How it works",
-    path: "#"
-  }
-]
+    label: "How it works",
+    path: "#",
+  },
+];
 
 const services = [
   {
-    label:"Frontend Development",
-    path: "#"
+    label: "Frontend Development",
   },
   {
-    label:"Full Stack Web Apps",
-    path: "#"
+    label: "Full Stack Web Apps",
   },
   {
-    label:"API Integrations",
-    path: "#"
+    label: "API Integrations",
   },
   {
-    label:"UI/UX Design",
-    path: "#"
+    label: "UI/UX Design",
   },
   {
-    label:"WordPress Development",
-    path: "#"
-  }
-]
+    label: "WordPress Development",
+  },
+];
 
 const Footer = () => {
   return (
@@ -52,7 +47,14 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Column 1 - Logo & Description */}
         <div>
-          <img src={Logo} alt="logo"  className="mb-0 w-40  object-contain object-top -mt-2" />
+          {/* <img
+            src={Logo}
+            alt="logo"
+            className="mb-0 w-40  object-contain object-top -mt-2"
+          /> */}
+          <h3 className="text-2xl font-extrabold tracking-wider text-purple-500 uppercase mb-5 w-40">
+            Feelize
+          </h3>
           <p className="text-sm leading-relaxed">
             We build modern, scalable web solutions using the latest
             technologies. Your product idea is in good hands.
@@ -93,15 +95,7 @@ const Footer = () => {
           <ul className="space-y-2 text-sm">
             {services.map((link, i) => (
               <li key={i} className="group">
-                <a
-                  href={link.path}
-                  className="flex items-center gap-2 transition-all duration-200 group-hover:translate-x-2 hover:text-white"
-                >
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
-                    –
-                  </span>
-                  {link.label}
-                </a>
+                {link.label}
               </li>
             ))}
           </ul>
@@ -150,21 +144,22 @@ const Footer = () => {
             <li className="flex items-start gap-3">
               <FaBriefcase className="text-purple-400 mt-1" />
               <div>
-                <div className="text-gray-400">wellfound&nbsp;<a
-                  className="text-purple-400 hover:underline"
-                  href="https://wellfound.com/company/feelize"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Profile
-                </a>
+                <div className="text-gray-400">
+                  <a
+                    className="text-purple-400 hover:underline"
+                    href="https://wellfound.com/company/feelize"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    wellfound&nbsp;Profile
+                  </a>
                 </div>
               </div>
             </li>
 
             {/* Support */}
             <li className="flex items-start gap-3">
-               <MdHeadsetMic className="text-purple-400 mt-1" />
+              <MdHeadsetMic className="text-purple-400 mt-1" />
               <div>
                 <div className="text-gray-400">Support</div>
                 <span>24/7 Online</span>
