@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import featuredServices from '../data/ServicesData';
+import { featuredServices, imageMap } from '../data/ServicesData';
 import { Link } from 'react-router-dom';
 
 const FeaturedServices = () => {
@@ -32,7 +32,7 @@ const FeaturedServices = () => {
               {/* Image or fallback title */}
               {!imageErrors[service.id] ? (
                 <img
-                  src={`/src/assets/${service.image}`}
+                  src={imageMap[service.image]}
                   alt={service.title}
                   onError={() => handleImageError(service.id)}
                   className="h-[250px] w-full object-cover bg-white"

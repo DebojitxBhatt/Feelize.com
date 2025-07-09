@@ -1,10 +1,26 @@
-const featuredServices = [
+import serviceid_1 from '../assets/serviceid_1.png';
+import serviceid_2 from '../assets/serviceid_2.png';
+import serviceid_3 from '../assets/serviceid_3.png';
+import serviceid_4 from '../assets/serviceid_4.png';
+import serviceid_5 from '../assets/serviceid_5.png';
+import serviceid_6 from '../assets/serviceid_6.png';
+
+export const imageMap = {
+  'serviceid_1.png': serviceid_1,
+  'serviceid_2.png': serviceid_2,
+  'serviceid_3.png': serviceid_3,
+  'serviceid_4.png': serviceid_4,
+  'serviceid_5.png': serviceid_5,
+  'serviceid_6.png': serviceid_6,
+};
+
+export const featuredServices = [
   {
     id: 1,
     title: '🔧 Technical Support & Performance Optimization',
     category: 'Maintenance & Support',
     price: '$99/hr',
-    image: 'servicesid1.png',
+    image: 'serviceid_1.png',
     description:
       'We provide rapid debugging, performance fixes, and backend support to ensure your SaaS platforms run smoothly and reliably at all times.',
     serviceDetail: [
@@ -20,7 +36,7 @@ const featuredServices = [
     title: '🧩 Full Stack Development',
     category: 'Product Engineering',
     price: '$199/hr',
-    image: 'servicesid2.png',
+    image: 'serviceid_2.png',
     description:
       'We design and build full-fledged SaaS products from user interfaces to robust APIs using modern stacks like MERN, PostgreSQL, Docker, and more.',
     serviceDetail: [
@@ -36,7 +52,7 @@ const featuredServices = [
     title: '🤖 AI Integration & Automation',
     category: 'AI & ML Solutions',
     price: '$199/hr',
-    image: 'servicesid3.png',
+    image: 'serviceid_3.png',
     description:
       'Integrate AI into your product from OCR and chatbot automation to recommendation systems using reliable, production-ready pipelines.',
     serviceDetail: [
@@ -52,7 +68,7 @@ const featuredServices = [
     title: '🛠️ Small Business Website Setup',
     category: 'Startup Solutions',
     price: '$99/hr',
-    image: 'servicesid4.png',
+    image: 'serviceid_4.png',
     description:
       'Perfect for startups and SMEs — we offer end-to-end solutions including website setup, hosting, basic CRM, email integration, and launch readiness.',
     serviceDetail: [
@@ -68,7 +84,7 @@ const featuredServices = [
     title: '💻 Custom Software Solutions',
     category: 'Enterprise Development',
     price: '$299/hr',
-    image: 'servicesid5.png',
+    image: 'serviceid_5.png',
     description:
       'We engineer scalable, high-performance custom platforms tailored to your unique business workflows — with long-term support and upgrades.',
     serviceDetail: [
@@ -84,7 +100,7 @@ const featuredServices = [
     title: '📦 SaaS MVP Launch Package',
     category: 'Go-to-Market',
     price: '$299/hr',
-    image: 'servicesid6.png',
+    image: 'serviceid_6.png',
     description:
       'Launch your SaaS idea fast with our MVP package — includes core frontend/backend features, auth, dashboard, and cloud deployment support.',
     serviceDetail: [
@@ -96,5 +112,3 @@ const featuredServices = [
     ],
   },
 ];
-
-export default featuredServices;

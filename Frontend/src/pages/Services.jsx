@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import featuredServices from '../data/ServicesData';
+import { featuredServices, imageMap } from '../data/ServicesData';
 
 const Services = () => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const Services = () => {
           <Link to={`/services/${service.id}`} key={service.id}>
             <div className="bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden cursor-pointer h-[480px] flex flex-col">
               <img
-                src={`/src/assets/${service.image}`}
+                src={imageMap[service.image]}
                 alt={service.title}
                 className="h-[250px] w-full object-cover bg-white"
               />
