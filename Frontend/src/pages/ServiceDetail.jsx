@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import featuredServices from '../data/ServicesData';
+import { featuredServices, imageMap } from '../data/ServicesData';
 
 const ServiceDetail = ({ openContactModal }) => {
   useEffect(() => {
@@ -30,7 +30,7 @@ const ServiceDetail = ({ openContactModal }) => {
         <div className="md:w-auto w-full flex items-start justify-start p-0">
           <div className="flex flex-col items-start w-full">
             <img
-              src={`/src/assets/${service.image}`}
+              src={imageMap[service.image]}
               alt={service.title}
               className="rounded-xl object-contain max-w-[500px] max-h-[500px]"
               style={{ width: '100%', height: 'auto' }}
