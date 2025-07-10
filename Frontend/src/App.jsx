@@ -46,6 +46,20 @@ function App() {
     }
   }, [location.pathname]);
 
+  // --- Scroll to anchor and clean hash from URL on homepage ---
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Remove hash from URL without reloading
+        window.history.replaceState({}, document.title, '/');
+      }
+    }
+  }, [location.pathname, location.hash]);
+  
+
   const openContactModal = () => setShowForm(true);
   const closeContactModal = () => setShowForm(false);
 
