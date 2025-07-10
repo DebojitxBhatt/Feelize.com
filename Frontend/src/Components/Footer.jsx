@@ -6,20 +6,25 @@ import {
   FaBriefcase,
 } from "react-icons/fa";
 import { MdEmail, MdPhone, MdLocationOn, MdHeadsetMic } from "react-icons/md";
-import Logo from "../assets/LOGO_FEELIZE.png";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
+// import Logo from "../assets/LOGO_FEELIZE.png";
 
 const quickLinks = [
   {
     label: "Services",
-    path: "#",
+    path: "/services",
+    type: "route", // full page rout
   },
   {
     label: "Pricing",
-    path: "#",
+    path: "pricing", // the id of the section
+    type: "scroll", // in-page scroll
   },
   {
     label: "How it works",
-    path: "#",
+    path: "how-it-works",
+    type: "scroll",
   },
 ];
 
@@ -71,15 +76,30 @@ const Footer = () => {
           <ul className="space-y-2 text-sm">
             {quickLinks.map((link, idx) => (
               <li key={idx} className="group">
-                <a
-                  href={link.path}
-                  className="flex items-center gap-2 transition-all duration-200 group-hover:translate-x-2 hover:text-white"
-                >
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
-                    –
-                  </span>
-                  {link.label}
-                </a>
+                {link.type === "scroll" ? (
+                  <ScrollLink
+                    to={link.path}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    className="flex items-center gap-2 transition-all duration-200 cursor-pointer group-hover:translate-x-2 hover:text-white"
+                  >
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
+                      –
+                    </span>
+                    {link.label}
+                  </ScrollLink>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className="flex items-center gap-2 transition-all duration-200 group-hover:translate-x-2 hover:text-white"
+                  >
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-purple-600">
+                      –
+                    </span>
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -199,7 +219,10 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} Feelize. All rights reserved.
+        © {new Date().getFullYear()} Feelize. All rights reserved.{" "}
+        <Link to="/legal" className="hover:text-purple-600 transition">
+          Privacy Policy
+        </Link>
       </div>
     </footer>
   );
