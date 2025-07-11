@@ -123,7 +123,7 @@ function Navbar() {
           <div className="fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg z-50 animate-slide-in px-6 py-4 flex flex-col">
             {/* Logo */}
             <div className="mb-6">
-              <img src={logo} alt="Feelize Logo" className="h-14 w-auto" />
+                          <h1 className="text-pink-600 text-2xl font-extrabold">Feelize</h1>
             </div>
 
             {/* Navigation Links */}

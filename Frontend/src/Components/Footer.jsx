@@ -16,11 +16,7 @@ const quickLinks = [
     path: "/services",
     type: "route", // full page rout
   },
-  {
-    label: "Pricing",
-    path: "pricing", // the id of the section
-    type: "scroll", // in-page scroll
-  },
+
   {
     label: "How it works",
     path: "how-it-works",
@@ -202,7 +198,8 @@ const Footer = () => {
               <FaTwitter />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/feelize"
+              target="_blank"
               className="p-2 bg-gray-800 rounded-full hover:bg-purple-600 transition"
             >
               <FaLinkedinIn />

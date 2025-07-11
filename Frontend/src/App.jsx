@@ -13,7 +13,6 @@ import TeamSection from './Components/TeamSection'
 import PricingSection from './Components/PricingSection'
 import TechStackSection from './Components/TechStackSection'
 import WhyChooseUs from './Components/WhyChooseUs'
-import ComparisonSection from './Components/ComparisonSection'
 import ContactFormModal from './Components/ContactFormModal'
 import { ToolsLoader } from './Components/RouteLoadingAnimations'
 import LegalPolicy from './Components/LegalPolicy';
@@ -82,7 +81,7 @@ function App() {
             
             <TechStackSection/>
             <WhyChooseUs/>
-            <ComparisonSection/>
+            {/* <ComparisonSection/> */}
           </>
         } />
         <Route path="/services/*" element={
