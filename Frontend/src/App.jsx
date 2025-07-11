@@ -16,6 +16,8 @@ import WhyChooseUs from './Components/WhyChooseUs'
 import ComparisonSection from './Components/ComparisonSection'
 import ContactFormModal from './Components/ContactFormModal'
 import { ToolsLoader } from './Components/RouteLoadingAnimations'
+import LegalPolicy from './Components/LegalPolicy';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -66,6 +68,7 @@ function App() {
   return (
     <>
       <ToolsLoader show={showTools} />
+      <ScrollToTop />
       <Navbar openContactModal={openContactModal}/>
       <Routes>
         <Route path="/" element={
@@ -88,6 +91,7 @@ function App() {
             <Route path=":id" element={<ServiceDetail openContactModal={openContactModal} />} />
           </Routes>
         } />
+        <Route path='/legal' element={<LegalPolicy />} />
       </Routes>
       <ContactFormModal isOpen={showForm} onClose={closeContactModal} />
       <Footer/>
