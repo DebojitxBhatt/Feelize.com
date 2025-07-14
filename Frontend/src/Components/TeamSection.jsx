@@ -1,5 +1,5 @@
  import { motion } from 'framer-motion';
-import navaj from '../assets/navaj_photo.jpg';
+
 import team1 from '../assets/team_1.png';
 import team2 from '../assets/team_2.png';
 import team3 from '../assets/team_3.png';

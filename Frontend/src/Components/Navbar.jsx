@@ -1,241 +1,123 @@
 import React, { useState } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
-import { useLocation, Link as RouterLink, useNavigate } from 'react-router-dom';
-import logo from '../assets/LOGO_FEELIZE.png';
+import { Menu, X, Code2, ArrowRight } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [showServices, setShowServices] = useState(false);
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isOnHomePage = location.pathname === '/';
   const navigate = useNavigate();
 
-  const NavLink = [
-    { name: 'About us', id: 'about-us' },
-    { name: 'Services', id: 'featured-services' }, // Changed from 'services' to 'featured-services'
-    { name: 'Technologies', id: 'Technologies' },
-    { name: 'How it Works', id: 'how-it-works' },
-  ];
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-  const toggleForm = () => {
-    setShowForm(!showForm);
-    setSubmitted(false);
-    closeMenu();
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        access_key: '79db56d4-056c-4817-9a43-a8c7e6954b83',
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value,
-      }),
-    });
-
-    if (res.ok) {
-      setSubmitted(true);
-      form.reset();
+  const scrollToSection = (sectionId) => {
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+      setIsMenuOpen(false); // Close mobile menu after clicking
     } else {
-      alert('Something went wrong. Please try again.');
+      navigate('/', { state: { scrollTo: sectionId } });
+      setIsMenuOpen(false);
     }
   };
 
-  // Helper to handle navigation to home and scroll to section
-  const handleNavToSection = (id) => (e) => {
-    e.preventDefault();
-    navigate(`/#${id}`);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }, 50);
-    closeMenu();
   };
 
   return (
-    <>
-      {/* Top Navbar */}
-      <nav className="w-full py-4 flex justify-center fixed z-50 top-0">
-        <div className="w-[95%] max-w-7xl bg-white shadow-md rounded-full px-6 py-3 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-1">
-            <h1 className="text-pink-600 text-2xl font-extrabold">Feelize</h1>
-          </div>
-
-          {/* Desktop Nav */}
-          <ul className="hidden md:flex space-x-8 items-center relative">
-            {NavLink.map((link) => (
-              <li
-                key={link.id}
-                className="relative group cursor-pointer text-black text-base font-medium"
-                onMouseEnter={() => link.hasDropdown && setShowServices(true)}
-                onMouseLeave={() => link.hasDropdown && setShowServices(false)}
-              >
-                {isOnHomePage ? (
-                  <ScrollLink
-                    to={link.id}
-                    smooth={true}
-                    duration={500}
-                    offset={-80}
-                    className="hover:text-red-600"
-                  >
-                    {link.name}
-                  </ScrollLink>
-                ) : (
-                  <RouterLink
-                    to={`/#${link.id}`}
-                    className="hover:text-red-600"
-                    onClick={handleNavToSection(link.id)}
-                  >
-                    {link.name}
-                  </RouterLink>
-                )}
-              </li>
-            ))}
-          </ul>
-
-          {/* Contact Button */}
-          <div className="hidden md:flex">
             <button
-              onClick={toggleForm}
-              className="text-white px-5 py-2 rounded-md font-medium bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] hover:from-[#c23b87] hover:to-[#0a1685] transition duration-300"
-            >
-              Contact Us
-            </button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden text-3xl text-red-600 cursor-pointer z-50" onClick={toggleMenu}>
-            <div className={`hamburger ${isOpen ? 'open' : ''}`}>
-              <span />
-              <span />
-              <span />
+            className="flex items-center space-x-2 focus:outline-none"
+            onClick={handleLogoClick}
+            aria-label="Go to top"
+          >
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+              <Code2 className="w-5 h-5 text-white" />
             </div>
-          </div>
-        </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Feelize
+            </span>
+          </button>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <button onClick={() => scrollToSection('featured-services')} className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group">
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button onClick={() => scrollToSection('about-us')} className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group">
+              About us
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button onClick={() => scrollToSection('technologies')} className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group">
+              Technologies
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button onClick={() => scrollToSection('how-it-works')} className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group">
+              How it works
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button onClick={() => scrollToSection('process')} className="relative text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium group">
+              Process
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-2 group">
+              <span>Start Project</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
       </nav>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50">
-          {/* Dark Background Overlay */}
-          <div className="fixed inset-0 bg-black bg-opacity-60" onClick={closeMenu}></div>
-
-          {/* Sidebar */}
-          <div className="fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg z-50 animate-slide-in px-6 py-4 flex flex-col">
-            {/* Logo */}
-            <div className="mb-6">
-                          <h1 className="text-pink-600 text-2xl font-extrabold">Feelize</h1>
-            </div>
-
-            {/* Navigation Links */}
-            <ul className="space-y-4">
-              {NavLink.map((link, idx) => (
-                <li key={idx} className="border-b border-gray-200 pb-2">
-                  {isOnHomePage ? (
-                    <ScrollLink
-                      to={link.id}
-                      smooth={true}
-                      duration={500}
-                      offset={-80}
-                      onClick={closeMenu}
-                      className="text-black text-lg font-medium hover:text-red-600 block"
-                    >
-                      {link.name}
-                    </ScrollLink>
-                  ) : (
-                    <RouterLink
-                      to={`/#${link.id}`}
-                      onClick={handleNavToSection(link.id)}
-                      className="text-black text-lg font-medium hover:text-red-600 block"
-                    >
-                      {link.name}
-                    </RouterLink>
-                  )}
-                </li>
-              ))}
-            </ul>
-
-            {/* Contact Us Button */}
-            <div className="mt-4">
+          {/* Mobile menu button */}
               <button
-                onClick={toggleForm}
-                className="w-3/4 mx-auto px-4 py-2 rounded-md text-white bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] hover:from-[#c23b87] hover:to-[#0a1685] transition duration-300 text-base font-medium"
+            className="md:hidden p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                Contact us
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
-            </div>
-          </div>
         </div>
-      )}
 
-      {/* Contact Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center px-4">
-          <div className="bg-white rounded-lg max-w-lg w-full p-6 relative shadow-lg">
-            <button
-              onClick={toggleForm}
-              className="absolute top-2 right-3 text-gray-600 text-xl font-bold hover:text-red-500"
-            >
-              ✕
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <nav className="flex flex-col space-y-4">
+              <button onClick={() => scrollToSection('featured-services')} className="text-gray-700 hover:text-purple-600 hover:translate-x-2 transition-all duration-300 font-medium text-left">
+                Services
+              </button>
+              <button onClick={() => scrollToSection('about-us')} className="text-gray-700 hover:text-purple-600 hover:translate-x-2 transition-all duration-300 font-medium text-left">
+                About us
+              </button>
+              <button onClick={() => scrollToSection('technologies')} className="text-gray-700 hover:text-purple-600 hover:translate-x-2 transition-all duration-300 font-medium text-left">
+                Technologies
+              </button>
+              <button onClick={() => scrollToSection('how-it-works')} className="text-gray-700 hover:text-purple-600 hover:translate-x-2 transition-all duration-300 font-medium text-left">
+                How it works
+              </button>
+              <button onClick={() => scrollToSection('process')} className="text-gray-700 hover:text-purple-600 hover:translate-x-2 transition-all duration-300 font-medium text-left">
+                Process
             </button>
-
-            <h2 className="text-2xl font-bold mb-4 text-center text-red-600">Contact Us</h2>
-
-            {submitted ? (
-              <div className="text-green-600 text-center text-lg font-medium">
-                ✅ Thank you! We'll get back to you soon.
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  required
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
-                />
-                <textarea
-                  name="message"
-                  rows="4"
-                  placeholder="Tell us about your project..."
-                  required
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
-                ></textarea>
-
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-md transition"
-                >
-                  Submit
+              <button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-2 group w-fit">
+                <span>Start Project</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
-              </form>
-            )}
+            </nav>
           </div>
+        )}
         </div>
-      )}
-    </>
+    </header>
   );
-}
+};
 
-export default Navbar;
+export default Header;
