@@ -1,138 +1,109 @@
-import { motion, transform, useAnimation } from "framer-motion";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiRedux,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiPostgresql,
-  SiFirebase,
+import React from 'react';
 
-  SiWordpress,
-  SiTypescript,
-  SiBootstrap,
-  SiSass,
-  SiJquery,
-  SiMysql
-} from "react-icons/si";
-import { FaAws } from "react-icons/fa"; // correct and available
-import { useEffect } from "react";
+const Technologies = () => {
+  const technologies = [
+    {
+      category: 'Frontend',
+      techs: [
+        { name: 'React', icon: '⚛️', color: 'from-blue-400 to-blue-600' },
+        { name: 'Next.js', icon: '▲', color: 'from-gray-700 to-gray-900' },
+        { name: 'Vue.js', icon: '💚', color: 'from-green-400 to-green-600' },
+        { name: 'TypeScript', icon: '📘', color: 'from-blue-500 to-blue-700' },
+        { name: 'Tailwind CSS', icon: '🎨', color: 'from-cyan-400 to-cyan-600' },
+        { name: 'Vite', icon: '⚡', color: 'from-yellow-400 to-orange-500' }
+      ]
+    },
+    {
+      category: 'Backend',
+      techs: [
+        { name: 'Node.js', icon: '🟢', color: 'from-green-500 to-green-700' },
+        { name: 'Python', icon: '🐍', color: 'from-yellow-400 to-blue-500' },
+        { name: 'Express.js', icon: '🚀', color: 'from-gray-600 to-gray-800' },
+        { name: 'FastAPI', icon: '⚡', color: 'from-teal-400 to-teal-600' },
+        { name: 'GraphQL', icon: '🔗', color: 'from-pink-400 to-pink-600' },
+        { name: 'REST APIs', icon: '🌐', color: 'from-indigo-400 to-indigo-600' }
+      ]
+    },
+    {
+      category: 'Mobile',
+      techs: [
+        { name: 'React Native', icon: '📱', color: 'from-blue-400 to-purple-500' },
+        { name: 'Flutter', icon: '🦋', color: 'from-blue-400 to-cyan-400' },
+        { name: 'iOS', icon: '🍎', color: 'from-gray-600 to-gray-800' },
+        { name: 'Android', icon: '🤖', color: 'from-green-400 to-green-600' },
+        { name: 'Expo', icon: '⚡', color: 'from-purple-400 to-purple-600' },
+        { name: 'PWA', icon: '📲', color: 'from-orange-400 to-red-500' }
+      ]
+    },
+    {
+      category: 'Database & Cloud',
+      techs: [
+        { name: 'PostgreSQL', icon: '🐘', color: 'from-blue-500 to-blue-700' },
+        { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-700' },
+        { name: 'Firebase', icon: '🔥', color: 'from-yellow-400 to-orange-500' },
+        { name: 'AWS', icon: '☁️', color: 'from-orange-400 to-orange-600' },
+        { name: 'Vercel', icon: '▲', color: 'from-gray-700 to-gray-900' },
+        { name: 'Supabase', icon: '⚡', color: 'from-green-400 to-teal-500' }
+      ]
+    }
+  ];
 
-
-const stacks = [
-  {
-    title: "Frontend",
-    items: [
-      { name: "React.js", icon: <SiReact /> },
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss3 /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "Redux", icon: <SiRedux /> },
-      { name: "Bootstrap", icon: <SiBootstrap /> },
-      { name: "Sass", icon: <SiSass /> },
-      { name: "jQuery", icon: <SiJquery /> },
-    ],
-  },
-  {
-    title: "Backend",
-    items: [
-      { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "Express.js", icon: <SiExpress /> },
-      { name: "MongoDB", icon: <SiMongodb /> },
-      { name: "PostgreSQL", icon: <SiPostgresql /> },
-      { name: "MySQL", icon: <SiMysql /> },
-      { name: "Firebase", icon: <SiFirebase /> },
-      { name: "AWS", icon: <FaAws /> },
-    ],
-  },
-  {
-    title: "Full Stack",
-    items: [
-      { name: "MERN Stack", icon: <SiReact /> },
-      { name: "Next.js + MongoDB", icon: <SiNextdotjs /> },
-      { name: "Node + PostgreSQL", icon: <SiNodedotjs /> },
-    ],
-  },
-  {
-    title: "WordPress",
-    items: [
-      { name: "WordPress", icon: <SiWordpress /> },
-      { name: "Custom Theme Dev", icon: <SiHtml5 /> },
-      { name: "Plugin Integration", icon: <SiCss3 /> },
-    ],
-  },
-];
-
-
-const TechStackSection = () => {
   return (
-    <section className="bg-white py-24 px-6" id="Technologies">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-800 leading-tight">
-          Our <span className="text-purple-700">Tech Stack</span>
-        </h2>
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-          We use a modern and versatile set of tools, frameworks, and libraries across frontend, backend, full stack, and WordPress development.
-        </p>
-      </div>
+    <section id="technologies" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Our <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Tech Stack</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            We use cutting-edge technologies to build scalable, performant, and beautiful applications
+          </p>
+        </div>
 
-      <div className="w-full px-8 md:px-16 space-y-10">
-        {stacks.map((stack, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ amount: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            // whileHover={{ scale: 1.05 }}
-            className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl"
-          >
-            <h3 className="text-2xl font-semibold text-purple-700 mb-6 text-center">
-              {stack.title}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {technologies.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="space-y-6">
+              <h3 className="text-xl font-semibold text-gray-900 text-center mb-6">
+                {category.category}
+              </h3>
+              
+              <div className="space-y-4">
+                {category.techs.map((tech, techIndex) => (
+                  <div
+                    key={techIndex}
+                    className="group bg-gray-50 rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-purple-100 cursor-pointer"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-10 h-10 bg-gradient-to-r ${tech.color} rounded-lg flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform duration-300`}>
+                        <span className="text-lg">{tech.icon}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
+                          {tech.name}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Always Learning, Always Growing
             </h3>
-
-            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:flex md:flex-wrap md:justify-around w-full">
-              {stack.items.map((item, i) => (
-                <li key={i} className="flex flex-col items-center gap-3 text-gray-800">
-
-                  <motion.span
-                    animate={{ scale: [1, 1.1, 1] }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{
-
-                      scale: {
-                        duration: 1.5,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut",
-                      },
-                      rotate: {
-                        duration: 0.3,
-                        ease: "easeInOut",
-                      }
-                    }}
-                    className="text-3xl text-purple-500">
-                    {item.icon}
-                  </motion.span>
-                  <span className="text-xl font-medium">{item.name}</span>
-
-                </li>
-              ))}
-            </ul>
-
-          </motion.div>
-        ))}
+            <p className="text-gray-600 leading-relaxed">
+              Technology evolves fast, and so do we. Our team stays up-to-date with the latest trends 
+              and best practices to ensure your project uses the most suitable and modern technologies.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default TechStackSection;
+export default Technologies;

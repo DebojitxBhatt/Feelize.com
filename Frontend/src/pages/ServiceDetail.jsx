@@ -74,7 +74,20 @@ const ServiceDetail = ({ openContactModal }) => {
             </ul>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-            <button type="button" onClick={openContactModal} className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-semibold text-center shine-btn">Contact us</button>
+            <button
+              type="button"
+              onClick={() => {
+                const el = document.getElementById('contact');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                  window.location.href = '/#contact';
+                }
+              }}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-semibold text-center shine-btn"
+            >
+              Contact us
+            </button>
             <Link to="/services" className="text-indigo-600 underline text-center self-center">Back to Services</Link>
           </div>
         </div>
